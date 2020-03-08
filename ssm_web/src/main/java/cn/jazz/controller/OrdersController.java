@@ -42,8 +42,8 @@ public class OrdersController {
      * @return
      * @throws Exception
      */
-    @RequestMapping("/findDetail")
-    public ModelAndView findDetail(@RequestParam(name = "id",required = true) String ordersId) throws Exception {
+    @RequestMapping("/findDetails")
+    public ModelAndView findDetails(@RequestParam(name = "id",required = true) String ordersId) throws Exception {
         ModelAndView mv = new ModelAndView();
         Orders orders = ordersService.findDeatil(ordersId);
         mv.addObject("orders",orders);

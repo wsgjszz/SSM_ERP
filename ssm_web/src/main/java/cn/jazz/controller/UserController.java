@@ -26,8 +26,17 @@ public class UserController {
     }
 
     @RequestMapping("/save.do")
-    public String save(UserInfo userInfo){
+    public String save(UserInfo userInfo) throws Exception {
         userService.save(userInfo);
         return "redirect:findAll.do";
+    }
+
+    @RequestMapping("/findDetails.do")
+    public ModelAndView findDetails(String id) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        UserInfo userInfo = userService.findDetails(id);
+        mv.addObject("user",userInfo);
+        mv.setViewName("user-show");
+        return mv;
     }
 }

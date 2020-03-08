@@ -58,9 +58,14 @@ public class IUserServiceImpl implements IUserService {
     }
 
     @Override
-    public void save(UserInfo userInfo) {
+    public void save(UserInfo userInfo) throws Exception {
         //对明文密码进行加密
         userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
         userDao.save(userInfo);
+    }
+
+    @Override
+    public UserInfo findDetails(String id) throws Exception {
+        return userDao.findById(id);
     }
 }

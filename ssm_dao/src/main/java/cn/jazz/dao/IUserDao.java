@@ -38,5 +38,24 @@ public interface IUserDao {
      * @param userInfo
      */
     @Insert("insert into USERS(Email,Username,Password,Phonenum,Status) values(#{email},#{username},#{password},#{phoneNum},#{status})")
-    public void save(UserInfo userInfo);
+    public void save(UserInfo userInfo) throws Exception;
+
+    /**
+     * 根据用户ID查询用户的详情(包括角色和权限)
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @Select("select * from users where id=#{id}")
+    @Results({
+            @Result(id = true, property = "id", column = "id"),
+            @Result(column = "username", property = "username"),
+            @Result(column = "email", property = "email"),
+            @Result(column = "password", property = "password"),
+            @Result(column = "phoneNum", property = "phoneNum"),
+            @Result(column = "status", property = "status"),
+            @Result(column = "id", property = "roles", javaType = List.class,
+                    many = @Many(select = "cn.jazz.dao.IRoleDao.findRolesByUserId"))
+    })
+    public UserInfo findById(String id) throws Exception;
 }
