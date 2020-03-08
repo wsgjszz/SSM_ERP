@@ -1,15 +1,18 @@
 package cn.jazz.dao;
 
 import cn.jazz.domain.UserInfo;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 public interface IUserDao {
 
+    /**
+     * 根据用户名查询出对应的用户信息，并封装为UserInfo对象
+     * @param username
+     * @return
+     * @throws Exception
+     */
     @Select("select * from users where username=#{username}")
     @Results({
             @Result(id = true, property = "id", column = "id"),
@@ -22,4 +25,18 @@ public interface IUserDao {
                     many = @Many(select = "cn.jazz.dao.IRoleDao.findByUserId"))
     })
     public UserInfo findByUsername(String username) throws Exception;
+
+    /**
+     * 查询所有用户信息
+     * @return
+     */
+    @Select("select * from users")
+    public List<UserInfo> findAll() throws Exception;
+
+    /**
+     * 插入一条用户记录
+     * @param userInfo
+     */
+    @Insert("insert into USERS(Email,Username,Password,Phonenum,Status) values(#{email},#{username},#{password},#{phoneNum},#{status})")
+    public void save(UserInfo userInfo);
 }

@@ -10,7 +10,7 @@ public class UserInfo {
     private String password;
     private String phoneNum;
     private int status;
-    private String statusStr;
+    private String statusStr; //页面显示格式化
     private List<Role> roles;
 
     public String getId() {
@@ -62,6 +62,9 @@ public class UserInfo {
     }
 
     public String getStatusStr() {
+        //状态 0未开启 1开启
+        if (status==0) statusStr="未开启";
+        else if (status==1) statusStr="开启";
         return statusStr;
     }
 

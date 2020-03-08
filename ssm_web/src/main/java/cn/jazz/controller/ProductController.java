@@ -16,8 +16,8 @@ public class ProductController {
     @Autowired
     private IProductService productService;
 
-    @RequestMapping("/add.do")
-    public String add(Product product) throws Exception {
+    @RequestMapping("/save.do")
+    public String save(Product product) throws Exception {
         productService.save(product);
         return "redirect:findAll.do";
     }

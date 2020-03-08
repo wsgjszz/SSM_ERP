@@ -91,7 +91,7 @@
         </section>
         <!-- 内容头部 /-->
 
-        <form action="${pageContext.request.contextPath}/product/add.do"
+        <form action="${pageContext.request.contextPath}/product/save.do"
               method="post">
             <!-- 正文区域 -->
             <section class="content"> <!--产品信息-->
