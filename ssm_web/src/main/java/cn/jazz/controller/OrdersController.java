@@ -4,6 +4,7 @@ import cn.jazz.domain.Orders;
 import cn.jazz.service.IOrdersService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,6 +43,7 @@ public class OrdersController {
      * @return
      * @throws Exception
      */
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @RequestMapping("/findDetails")
     public ModelAndView findDetails(@RequestParam(name = "id",required = true) String ordersId) throws Exception {
         ModelAndView mv = new ModelAndView();

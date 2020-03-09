@@ -4,6 +4,7 @@ import cn.jazz.domain.Permission;
 import cn.jazz.domain.Role;
 import cn.jazz.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,12 +28,14 @@ public class RoleController {
         return mv;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/save.do")
     public String save(Role role) throws Exception {
         roleService.save(role);
         return "redirect:findAll.do";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/findRoleByIdAndAllPermission.do")
     public ModelAndView findRoleByIdAndAllPermission(@RequestParam(name = "id",required = true) String roleId) throws Exception {
         ModelAndView mv = new ModelAndView();
@@ -44,6 +47,7 @@ public class RoleController {
         return mv;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/addPermissionToRole.do")
     public String addPermissionToRole(@RequestParam(name = "roleId",required = true)String roleId,@RequestParam(name = "ids",required = true)String[] permissionIds) throws Exception {
         roleService.addPermissionToRole(roleId,permissionIds);
