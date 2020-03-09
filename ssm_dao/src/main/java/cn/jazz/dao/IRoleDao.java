@@ -1,10 +1,7 @@
 package cn.jazz.dao;
 
 import cn.jazz.domain.Role;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -32,4 +29,20 @@ public interface IRoleDao {
                     many=@Many(select="cn.jazz.dao.IPermissionDao.findByRoleId"))
     })
     public List<Role> findRolesByUserId(String userId) throws Exception;
+
+    /**
+     * 查询所有角色信息
+     * @return
+     * @throws Exception
+     */
+    @Select("select * from role")
+    public List<Role> findAll() throws Exception;
+
+    /**
+     * 插入一条角色记录
+     * @param role
+     * @throws Exception
+     */
+    @Insert("insert into role(rolename,roledesc) values(#{roleName},#{roleDesc})")
+    public void save(Role role) throws Exception;
 }
