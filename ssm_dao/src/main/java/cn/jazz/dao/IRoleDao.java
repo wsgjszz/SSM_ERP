@@ -1,5 +1,6 @@
 package cn.jazz.dao;
 
+import cn.jazz.domain.Permission;
 import cn.jazz.domain.Role;
 import org.apache.ibatis.annotations.*;
 
@@ -45,4 +46,30 @@ public interface IRoleDao {
      */
     @Insert("insert into role(rolename,roledesc) values(#{roleName},#{roleDesc})")
     public void save(Role role) throws Exception;
+
+    /**
+     * 根据角色ID查询对应角色信息
+     * @param roleId
+     * @return
+     */
+    @Select("select * from role where id=#{id}")
+    public Role findById(String roleId);
+
+    /**
+     * 根据角色ID查询可添加的权限信息
+     * @param roleId
+     * @return
+     * @throws Exception
+     */
+    @Select("select * from permission where id not in (select permissionId from role_permission where roleId=#{roleId})")
+    public List<Permission> findOrtherPermissionById(String roleId) throws Exception;
+
+    /**
+     * 插入一条角色关联权限记录
+     * @param roleId
+     * @param permissionId
+     * @throws Exception
+     */
+    @Select("insert into role_permission(permissionId,roleId) values(#{permissionId},#{roleId})")
+    public void addPermissionToRole(@Param("roleId") String roleId,@Param("permissionId") String permissionId) throws Exception;
 }

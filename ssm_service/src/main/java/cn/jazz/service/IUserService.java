@@ -1,5 +1,6 @@
 package cn.jazz.service;
 
+import cn.jazz.domain.Role;
 import cn.jazz.domain.UserInfo;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -11,4 +12,10 @@ public interface IUserService extends UserDetailsService {
     public void save(UserInfo userInfo) throws Exception;
 
     public UserInfo findDetails(String id) throws Exception;
+
+    public UserInfo findById(String userId) throws Exception;
+
+    public List<Role> findOrtherRole(String userId) throws Exception;
+
+    public void addRoleToUser(String userId, String[] roleIds) throws Exception;
 }

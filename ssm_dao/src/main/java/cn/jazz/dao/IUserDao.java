@@ -1,7 +1,9 @@
 package cn.jazz.dao;
 
+import cn.jazz.domain.Role;
 import cn.jazz.domain.UserInfo;
 import org.apache.ibatis.annotations.*;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -58,4 +60,16 @@ public interface IUserDao {
                     many = @Many(select = "cn.jazz.dao.IRoleDao.findRolesByUserId"))
     })
     public UserInfo findById(String id) throws Exception;
+
+    @Select("select * from role where id not in (select roleId from users_role where userId=#{userId})")
+    public List<Role> findOrtherRoleById(String userId) throws Exception;
+
+    /**
+     * 插入一条用户与角色关联信息
+     * @param userId
+     * @param roleId
+     * @throws Exception
+     */
+    @Select("insert into USERS_ROLE(userId,RoleId) values(#{userId},#{roleId})")
+    public void addRoleToUser(@Param("userId") String userId,@Param("roleId") String roleId) throws Exception;
 }
