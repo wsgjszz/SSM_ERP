@@ -18,7 +18,7 @@ import java.util.List;
 
 @Service("userService")
 @Transactional
-public class IUserServiceImpl implements IUserService {
+public class UserServiceImpl implements IUserService {
 
     @Autowired
     private IUserDao userDao;
@@ -69,16 +69,23 @@ public class IUserServiceImpl implements IUserService {
         return userDao.findById(id);
     }
 
-    @Override
-    public UserInfo findById(String userId) throws Exception {
-        return userDao.findById(userId);
-    }
-
+    /**
+     * 查询当前用户不具有的角色信息
+     * @param userId
+     * @return
+     * @throws Exception
+     */
     @Override
     public List<Role> findOrtherRole(String userId) throws Exception {
         return userDao.findOrtherRoleById(userId);
     }
 
+    /**
+     * 给用户添加一个或多个角色
+     * @param userId
+     * @param roleIds
+     * @throws Exception
+     */
     @Override
     public void addRoleToUser(String userId, String[] roleIds) throws Exception {
         for (String roleId : roleIds) {

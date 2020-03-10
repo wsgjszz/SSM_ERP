@@ -61,6 +61,12 @@ public interface IUserDao {
     })
     public UserInfo findById(String id) throws Exception;
 
+    /**
+     * 查询用户不具有的角色信息
+     * @param userId
+     * @return
+     * @throws Exception
+     */
     @Select("select * from role where id not in (select roleId from users_role where userId=#{userId})")
     public List<Role> findOrtherRoleById(String userId) throws Exception;
 

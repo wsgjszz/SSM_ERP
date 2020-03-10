@@ -1,6 +1,5 @@
 package cn.jazz.controller;
 
-import cn.jazz.dao.ITravellerDao;
 import cn.jazz.service.impl.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

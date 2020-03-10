@@ -13,8 +13,6 @@ public interface IUserService extends UserDetailsService {
 
     public UserInfo findDetails(String id) throws Exception;
 
-    public UserInfo findById(String userId) throws Exception;
-
     public List<Role> findOrtherRole(String userId) throws Exception;
 
     public void addRoleToUser(String userId, String[] roleIds) throws Exception;

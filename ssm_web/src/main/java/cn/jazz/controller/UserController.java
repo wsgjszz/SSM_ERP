@@ -48,7 +48,7 @@ public class UserController {
     @RequestMapping("/findUserByIdAndAllRole.do")
     public ModelAndView findUserByIdAndAllRole(@RequestParam(name = "id",required = true) String userId) throws Exception {
         ModelAndView mv = new ModelAndView();
-        UserInfo userInfo = userService.findById(userId);
+        UserInfo userInfo = userService.findDetails(userId);
         List<Role> ortherRoles = userService.findOrtherRole(userId);
         mv.addObject("user",userInfo);
         mv.addObject("roleList",ortherRoles);

@@ -24,6 +24,11 @@ public interface IPermissionDao {
     @Select("select * from permission")
     public List<Permission> findAll() throws Exception;
 
+    /**
+     * 插入一条权限记录
+     * @param permission
+     * @throws Exception
+     */
     @Insert("insert into permission(permissionName,url) values(#{permissionName},#{url})")
     public void save(Permission permission) throws Exception;
 }
