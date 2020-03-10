@@ -9,8 +9,8 @@ public class UserInfo {
     private String email;
     private String password;
     private String phoneNum;
-    private int status;
-    private String statusStr; //页面显示格式化
+    private int status;          //状态 0未开启 1开启
+    private String statusStr;    //页面显示格式化
     private List<Role> roles;
 
     public String getId() {

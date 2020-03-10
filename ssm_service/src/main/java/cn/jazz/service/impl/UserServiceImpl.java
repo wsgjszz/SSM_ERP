@@ -28,6 +28,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserInfo userInfo = null;
+
         try {
             userInfo = userDao.findByUsername(username);
         } catch (Exception e) {

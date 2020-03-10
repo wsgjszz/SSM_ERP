@@ -11,6 +11,6 @@ public class BCryptPasswordEncoderUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(encodePassword("123"));;
+        System.out.println(encodePassword("root"));;
     }
 }
