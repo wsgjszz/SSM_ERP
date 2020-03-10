@@ -1,4 +1,4 @@
-## 企业权限管理系统
+企业权限管理系统
 
 ### 环境搭建
 
@@ -183,8 +183,6 @@
   - ssm_service
   - ssm_web
   - ssm_utils
-
-![image-20200305234415543](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20200305234415543.png)
 
 ##### 配置文件
 
@@ -6828,10 +6826,8 @@ public class OrdersController {
 
   - 随意访问任意页面，会自动跳转到/login认证页面
 
-  ![image-20200308165157512](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20200308165157512.png)
-
   - 当访问index.html页面时发现会弹出登录窗口，即使没有建立下面的登录页面，但会跳到上面的登录页面
-  - 这是因为在spring-security.xml中设置http的auto-conﬁg=”true”时Spring Security会自动生成的。 
+- 这是因为在spring-security.xml中设置http的auto-conﬁg=”true”时Spring Security会自动生成的。 
 
 ##### 使用数据库认证
 
@@ -7095,15 +7091,11 @@ public class OrdersController {
   }
   ```
 
-- 用户登录流程图
+- 用户登录流程
 
   - spring-security负责了原来controller的工作
   - 业务层也实现了spring-security规范化的UserDetailsService接口
   - 最终结果封装为spring-security提供的User类
-
-![image-20200308223635683](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20200308223635683.png)
-
-
 
 #### 用户功能
 
@@ -8258,10 +8250,6 @@ public interface IPermissionDao {
 #### 权限关联功能
 
 ##### 用户添加角色
-
-###### 流程图
-
-![image-20200309182004194](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20200309182004194.png)
 
 - 功能分析
 
