@@ -14,6 +14,10 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <listener>
+        <!-- 配置RequestContextListener后，可以获取HttpRequestServlet对象 -->
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -59,6 +63,10 @@
     <error-page>
         <error-code>403</error-code>
         <location>/pages/error/403.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/pages/error/500.jsp</location>
     </error-page>
 
     <!-- 设置默认首页文件 -->

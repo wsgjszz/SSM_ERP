@@ -134,22 +134,4 @@ public class Orders {
         this.orderDesc = orderDesc;
     }
 
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "id='" + id + '\'' +
-                ", orderNum='" + orderNum + '\'' +
-                ", orderTime=" + orderTime +
-                ", orderTimeStr='" + orderTimeStr + '\'' +
-                ", orderStatus=" + orderStatus +
-                ", orderStatusStr='" + orderStatusStr + '\'' +
-                ", peopleCount=" + peopleCount +
-                ", product=" + product +
-                ", travellers=" + travellers +
-                ", member=" + member +
-                ", payType=" + payType +
-                ", payTypeStr='" + payTypeStr + '\'' +
-                ", orderDesc='" + orderDesc + '\'' +
-                '}';
-    }
 }

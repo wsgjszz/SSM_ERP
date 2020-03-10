@@ -27,7 +27,7 @@ public class OrdersController {
      * @throws Exception
      */
     @RequestMapping("/findAll.do")
-    public ModelAndView findAll(@RequestParam(name = "page",required = true,defaultValue = "1") int page,@RequestParam(name = "size",required = true,defaultValue = "4") int size) throws Exception {
+    public ModelAndView findAll(@RequestParam(name = "page",required = true,defaultValue = "1") Integer page,@RequestParam(name = "size",required = true,defaultValue = "4") Integer size) throws Exception {
         ModelAndView mv = new ModelAndView();
         List<Orders> orders = ordersService.findAll(page,size);
         //pageInfo就是将分页查询到的数据封装到一个PageBean

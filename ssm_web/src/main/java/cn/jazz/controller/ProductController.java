@@ -24,7 +24,7 @@ public class ProductController {
         return "redirect:findAll.do";
     }
 
-    @RequestMapping("findAll.do")
+    @RequestMapping("/findAll.do")
     public ModelAndView findAll() throws Exception {
         ModelAndView mv = new ModelAndView();
         List<Product> ps = productService.findAll();

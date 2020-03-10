@@ -13,7 +13,7 @@ public class TestController {
     @Autowired
     private TestService testService;
 
-    @RequestMapping("findByOrderid.do")
+    @RequestMapping("/findByOrderid.do")
     public void findByOrderid(@RequestParam(name = "id",required = true) String ordersId) throws Exception{
         System.out.println("结果如下");
         System.out.println(testService.findById(ordersId).toString());
